@@ -1,0 +1,4 @@
+name: OneInTheChamber
+version: 0.1
+main: de.ripito.oitc.main.OneInTheChamber
+depend: [ProtocolLib]
