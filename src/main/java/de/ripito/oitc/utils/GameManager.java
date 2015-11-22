@@ -95,16 +95,14 @@ public class GameManager {
         Scoreboard board = Bukkit.getScoreboardManager().getNewScoreboard();
         Objective info = board.registerNewObjective( "info", "dummy" );
 
-        info.setDisplayName( ChatColor.AQUA + "OITC" + ChatColor.DARK_GRAY + " | " + ChatColor.DARK_AQUA +
+        info.setDisplayName( ChatColor.AQUA + "OITC" + ChatColor.DARK_GRAY + " | " + ChatColor.DARK_AQUA + "Goal: " +
                 plugin.getConfig().getInt( "score-goal" ) );
         info.setDisplaySlot( DisplaySlot.SIDEBAR );
 
-        int i = Bukkit.getOnlinePlayers().size() - 1;
-
         for ( Player onlinePlayers : Bukkit.getOnlinePlayers() ) {
 
-            info.getScore( ChatColor.YELLOW + onlinePlayers.getDisplayName() + ": " ).setScore( i );
-            i--;
+            info.getScore( ChatColor.YELLOW + onlinePlayers.getDisplayName() + ": " )
+                    .setScore( scores.containsKey( onlinePlayers ) ? scores.get( onlinePlayers ) : 0 );
 
         }
 
